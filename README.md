@@ -1,2 +1,2 @@
 # nuvi
-Nuvi.js framework
+Nuvi.js is javascript framework for map service
