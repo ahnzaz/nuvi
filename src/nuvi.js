@@ -59,8 +59,9 @@
      */
     var mapContextCls = nuviRootPackage.MapContext = function MapContext(_obj)
     {
-      this.overlayList = new Array();
-      this.mapContainer = null;
+        this.overlayList = new Array();
+        this.mapContainer = null;
+        this.mapContext =
     };
     mapContextCls.prototype.addOverlay = function (_overlay) {
         this.overlayList.add(_overlay);
@@ -69,23 +70,33 @@
 
     };
 
+    mapContextCls.prototype.getNativeMapContext = function(){
+        return mapContext;
+    }
+
     /**
      * MapProvider Class. <br />
      * @since 1.0
      * @create 2015-07-06
      */
     var mapProviderCls = nuviRootPackage.MapProvider = function MapProvider(_obj){
+        this.ordinal    = ++mapProviderCls.ordinal;
         this.loadUrl    = _obj.url;
         this.coord      = _obj.coord;
     };
-    mapProviderCls.GOOGLE_MAP   = 0;
-    mapProviderCls.DAUM_MAP     = 0;
-    mapProviderCls.NAVER_MAP    = 0;
-    {
-        GOOGLE_MAP  : 0,
-        DAUM_MAP    : 1,
-        NAVER_MAP   : 2
-    };
+    mapProviderCls.ordinal = 0;
+    mapProviderCls.GOOGLE_MAP   = new MapProvider({
+        url     : null,
+        coord   : null
+    });
+    mapProviderCls.DAUM_MAP     = new MapProvider({
+        url     : null,
+        coord   : null
+    });
+    mapProviderCls.NAVER_MAP    = new MapProvider({
+        url     : null,
+        coord   : null
+    });
 
     /**
      * nuvi.function package.
