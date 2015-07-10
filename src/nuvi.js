@@ -49,6 +49,10 @@
         else {
             // Throw no provider exception.
         }
+
+        if(callback in _obj){
+            nuviRoot.callback = _obj.callback;
+        }
     };
 
     /**
@@ -59,9 +63,25 @@
      */
     var mapContextCls = nuviRootPackage.MapContext = function MapContext(_obj)
     {
-        this.overlayList = new Array();
-        this.mapContainer = null;
-        this.mapContext =
+        this.overlayList             = new Array();
+        this.mapContainer            = _obj.container;
+        this.mapContext              = null;
+
+        // Map attributes
+        this.zoom                       = _obj.zoom;
+        this.tilt                       = _obj.tilt;
+        this.center                     = _obj.center;
+        this.mapMode                    = _obj.mapMode;
+        this.size                       = _obj.size;
+
+        // Naver Attributes
+        this.activateTrafficMap         = _obj.activateTrafficMap;
+        this.activateBicycleMap         = _obj.activateBicycleMap;
+
+        // Map control flag
+        this.enableWheelZoom            = _obj.enableWheelZoom;
+        this.enableDragPan              = _obj.enableDragPan;
+        this.enableDblClickZoom         = _obj.enableDblClickZoom;
     };
     mapContextCls.prototype.addOverlay = function (_overlay) {
         this.overlayList.add(_overlay);
