@@ -1,13 +1,27 @@
-/**
- * OverlayManager class. <br />
- * @since 1.0
- * @added 2015-07-10
- * @constructor
- */
-function OverlayManagerClass(_obj) {
-    this.mapContext     = _obj.mapContext;
+(function (_window) {
 
-    this.overlayList    = _obj.overlayList;
+    /**
+     }
+     * OverlayManager class. <br />
+     * @since 1.0
+     * @added 2015-07-10
+     * @constructor
+     */
+    function OverlayManagerClass(_obj) {
+        this.mapContext     = _obj.mapContext;
 
-    this.overlayFactory = _obj.factory;
-}
+        this.overlayList    = _obj.overlayList;
+
+        this.overlayDeliver = _obj.deliver;
+
+        this.container      = null;
+
+        this.level          = _obj.level;
+    }
+
+    OverlayManagerClass.prototype.hideAll = function () {
+        this.container.display = "none";
+    };
+
+    _window.nuvi,overlay.OverlayManager = OverlayManagerClass;
+}(window);
